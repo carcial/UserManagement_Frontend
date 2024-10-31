@@ -1,0 +1,116 @@
+.signup-button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.signup-button-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+}
+
+.sign-up {
+    color: rgb(5, 103, 103);
+    background-color: white;
+    border-radius: 15px;
+    margin: 0 20px;
+    text-decoration: none;
+    transition: .8s;
+    padding: 8px;
+    font-weight: 800;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    padding: 5px;
+}
+
+.login-input input {
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+    outline: none;
+    overflow: hidden;
+}
+
+.login-button-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-button-container button {
+    margin: 0;
+    width: 120px;
+}
+
+.login-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 30%;
+    max-width: 80%;
+    min-height: 30vh;
+    max-height: 60vh;
+    gap: 10px;
+    padding: 20px 0;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+    max-width: 100%;
+    height: 80vh;
+    padding: 10px 0;
+}
+
+.registration-container .registration-massage-fail {
+    display: none;
+}
+
+.registration-container .registration-massage-Success {
+    display: block;
+    border: 1px solid rgb(54, 131, 54);
+    background: rgb(152, 247, 152);
+    font-weight: 900;
+    padding: 5px 38px;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular',
+        'Lucida Grande', 'Lucida Sans Unicode', Geneva,
+        Verdana, sans-serif;
+}
+
+.registration-container .regis-sub-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 40%;
+    border: 2px solid black;
+    gap: 10px;
+    padding: 10px 0;
+    border-radius: 10px;
+}
+
+
+.all-input-container .input-container {
+    align-items: center;
+}
+
+.registration-container .regis-sub-container .regis-title {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

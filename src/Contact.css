@@ -1,0 +1,248 @@
+.contact-page-container {
+    width: 100%;
+}
+
+.contact-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-pages-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    padding: 12px;
+}
+
+.current-page-number {
+    display: flex;
+    margin: 0 30px;
+    gap: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: auto;
+}
+
+
+.current-page-number .active-pageNumber {
+    background-color: rgb(5, 103, 103);
+    color: white;
+    border: none;
+    padding: 0 6px;
+}
+
+.contact-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    width: 90%;
+}
+
+table {
+    min-width: 70%;
+    height: auto;
+    border: 1px solid black;
+}
+
+th {
+    color: white;
+    background-color: rgb(5, 103, 103);
+    overflow: hidden;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+tr {
+    height: 30px;
+}
+
+td {
+    overflow-x: hidden;
+    width: auto;
+}
+
+.user-table-row {
+    cursor: pointer;
+}
+
+.user-table-row:hover {
+    background-color: rgb(108, 232, 232);
+}
+
+.clicked-user-meta-infos .lab {
+    display: flex;
+    align-items: center;
+}
+
+.clicked-user-meta-infos .lab label {
+    margin-right: 10px;
+}
+
+.clicked-user-meta-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid black;
+    padding: 10px;
+    width: 90%;
+}
+
+.clicked-user-meta-infos label {
+    min-width: 100px;
+}
+
+.clicked-user-meta-infos .lab h2 {
+    overflow: auto;
+}
+
+.user-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+}
+
+.user-detail-container.confirm {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.user-detail-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid black;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.user-detail-infos-image {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.user-detail-infos img {
+    width: 145px;
+    height: 140px;
+}
+
+.return-and-delete-account {
+    display: flex;
+    gap: 15px;
+}
+
+.return-and-delete-account button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.delete-confirmation-container {
+    border: 1px solid black;
+    padding: 15px;
+    min-width: 30%;
+    max-width: 90%;
+    position: fixed;
+    background-color: white;
+    top: 50%;
+    z-index: 1;
+}
+
+.delete-confirmation-button-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.delete-confirmation-button-container button {
+    margin: 0;
+}
+
+.delete-button {
+    background-color: rgb(214, 46, 46);
+}
+
+td {
+    text-align: center;
+    border-top: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.search-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.search-bar-container .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40%;
+}
+
+.input-container input {
+    height: 30px;
+    width: 80%;
+    border-radius: 18px;
+    padding-left: 18px;
+    outline: none;
+}
+
+.display-seach {
+    min-width: 35%;
+    max-height: 100px;
+    padding: 0 10px;
+    margin-right: 40px;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    border: 1px solid black;
+}
+
+.display-seach.empty {
+    display: none;
+}
+
+.searched-user {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px 0;
+    background-color: rgb(19, 111, 111);
+}
+
+.searched-user h2,
+h4 {
+    color: white;
+    padding: 5px 0;
+}
+
+.searched-user h2 {
+    border-bottom: 1px solid white;
+    width: 200px;
+    text-align: center;
+
+}
+
+
+/*
+  .display-seach::-webkit-scrollbar {
+    display: none;
+  }
+  */

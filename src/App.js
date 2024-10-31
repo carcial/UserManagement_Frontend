@@ -1,24 +1,84 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import Navbar from './components/Navbar';
+import Home from "./components/Home"
+import Service from "./components/Service"
+import Contact from "./components/Contact"
+import Profile from "./components/Profile"
+import SignUp from "./components/SignUp"
+
 
 function App() {
+
+  const [logOut, setLogOut] = useState(false)
+
+  const [hasAccount, sethasAccount] = useState(false)
+
+  const [name, setName] = useState("")
+
+  const [userId, setUserId] = useState("")
+
+  const [pass, setPass] = useState("")
+
+  const [authorised, isAuthorised] = useState(false)
+
+
+  function reset(update) {
+    setName(update)
+  }
+
+  function getId(id) {
+    setUserId(id)
+  }
+
+  function getPass(pass) {
+    setPass(pass)
+  }
+
+  function checkaccount(check) {
+    sethasAccount(check)
+  }
+
+  function authority(value) {
+    isAuthorised(value)
+  }
+
+  //console.log(datas[datas.length - 1])
+
+
+  const navigate = useNavigate()
+
+  function redirect() {
+    setLogOut(true)
+    navigate("/")
+  }
+  function goBackToSignUp() {
+    setLogOut(false)
+    navigate("/")
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+
+      <Navbar logs={logOut} red={goBackToSignUp}
+        newName={name} getId={getId}
+        authorised={authorised} authority={authority} />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/service' element={<Service />} />
+        <Route path='/contact' element={<Contact isLogged={logOut} usId={userId} />} />
+        <Route path='/profile' element={<Profile usId={userId} setUserName={reset}
+          pass={pass} />} />
+        <Route path='/signup' element={<SignUp red={redirect} reset={reset}
+          getId={getId} getPass={getPass}
+          check={checkaccount}
+          hasAccount={hasAccount}
+          hasAuthority={authority} />} />
+
+      </Routes>
+    </main>
   );
 }
 
