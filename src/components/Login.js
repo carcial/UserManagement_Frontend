@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { MdOutlineMail, MdOutlinePassword, MdOutlineArrowForward } from "react-icons/md"
+import { API_URL } from './SignUp';
 
 export default function Login(props) {
 
@@ -56,7 +57,7 @@ export default function Login(props) {
     function loginSuccessful() {
         testIfInputEmpty()
         if (countFieldInput === 0) {
-            fetch("http://3.120.151.136:8082/api/v1/user/login",
+            fetch(`${API_URL}/login`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -86,7 +87,7 @@ export default function Login(props) {
     }
 
     function getRoles() {
-        fetch(`http://3.120.151.136:8082/api/v1/user/getRoles/${userIdForRole}`)
+        fetch(`${API_URL}/getRoles/${userIdForRole}`)
             .then(resp => resp.json())
             .then(data => {
                 roles = data;

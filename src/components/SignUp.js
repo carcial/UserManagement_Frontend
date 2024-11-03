@@ -5,6 +5,7 @@ import Login from './Login';
 import "../SignUp.css"
 import { MdOutlineMail, MdOutlinePassword, MdOutlinePersonOutline, MdOutlineArrowBack } from "react-icons/md"
 
+export const API_URL = "https://usermanagement-backend-ht6k.onrender.com/api/v1/user";
 
 export default function SignUp(props) {
 
@@ -77,7 +78,7 @@ export default function SignUp(props) {
         testIfInputEmpty()
 
         if (countFieldInput === 0) {
-            fetch("http://3.120.151.136:8082/api/v1/user/register",
+            fetch(`${API_URL}/register`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

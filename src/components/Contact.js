@@ -7,6 +7,7 @@ import { AiTwotoneDelete } from "react-icons/ai"
 import { CgProfile } from "react-icons/cg"
 import { CiSearch } from "react-icons/ci"
 import "../Contact.css"
+import { API_URL } from './SignUp'
 
 
 export default function Contact(props) {
@@ -38,7 +39,7 @@ export default function Contact(props) {
 
 
     function getDataFromBackend() {
-        fetch(`http://3.120.151.136:8082/api/v1/user/see_users/${props.usId}`)
+        fetch(`${API_URL}/see_users/${props.usId}`)
             .then(resp => resp.json())
             .then(data => {
 
@@ -58,7 +59,7 @@ export default function Contact(props) {
     }
 
     function getProfilePic(id) {
-        fetch(`http://3.120.151.136:8082/api/v1/user/getImage/${id}`)
+        fetch(`${API_URL}/getImage/${id}`)
             .then(resp => {
                 if (!resp.ok) {
                     console.log("no image was found")
@@ -88,7 +89,7 @@ export default function Contact(props) {
 
     function deleteUserAccount(email) {
         console.log("clicked email", email)
-        fetch(`http://3.120.151.136:8082/api/v1/user/deleteUser/${email}/${props.usId}`,
+        fetch(`${API_URL}/deleteUser/${email}/${props.usId}`,
             {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" }
