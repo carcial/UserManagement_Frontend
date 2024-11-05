@@ -24,13 +24,13 @@ export default function Navbar(props) {
 
                 <nav className={`nav-tag ${isActive ? "toggled" : ""}`}>
                     <NavLink to="/" className="link">Home</NavLink>
+                    <NavLink to="/service" className="link">Service</NavLink>
                     {props.logs &&
                         <>
                             <NavLink to="/profile" className="link">Profile</NavLink>
                             {props.authorised &&
                                 <>
                                     <NavLink to="/contact" className="link">All Users</NavLink>
-                                    <NavLink to="/service" className="link">Service</NavLink>
                                 </>}
                         </>}
                     {props.logs ? <Logout redi={props.red} username={props.newName} getUsId={props.getId} authority={props.authority} />
