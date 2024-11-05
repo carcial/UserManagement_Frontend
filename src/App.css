@@ -5,63 +5,12 @@
 }
 
 
-
-.all-input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.all-input-container .input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 90%;
-  padding: 5px;
-}
-
-.input-container input {
-  width: 100%;
-  height: 35px;
-  padding-left: 10px;
-  outline: none;
-  overflow: hidden;
-}
-
-
-.input-container label {
-  font-weight: 800;
-  font-family: Arial, Helvetica, sans-serif;
-  padding-right: 20px;
-}
-
-
-label {
-  width: auto;
-  font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .person-icon {
   width: 30px;
   height: 20px;
   font-size: 30px;
 }
 
-button {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  width: 150px;
-  height: 35px;
-  font-weight: 700;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(5, 103, 103);
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-}
 
 
 .suc-massage {
@@ -100,18 +49,70 @@ button {
 }
 
 
-span {
-  color: rgb(5, 103, 103);
-  font-weight: 800;
-  cursor: pointer;
-}
-
 .not-logged-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
+
+
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f8fc;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.welcome-message h1,
+.not-logged-in-message h1 {
+  font-size: 2.4em;
+  color: #084c41;
+  margin-bottom: 10px;
+}
+
+.welcome-message h1 span {
+  color: #e63946;
+}
+
+.welcome-message p,
+.not-logged-in-message p {
+  font-size: 1.2em;
+  color: #444;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.not-logged-in-message {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-button {
+  background-color: #084c41;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #063a32;
+  transform: translateY(-2px);
+}
+
 
 
 
@@ -225,6 +226,10 @@ span {
 
   .user-detail-infos {
     flex-direction: column;
+  }
+
+  .clicked-user-meta-infos h3 {
+    overflow-y: scroll;
   }
 
   .user-detail-infos-image {

@@ -1,6 +1,6 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MdOutlineMail, MdOutlinePassword, MdOutlineArrowForward } from "react-icons/md"
+import "../Login.css"
 import { API_URL } from './SignUp';
 
 export default function Login(props) {
@@ -92,7 +92,7 @@ export default function Login(props) {
             .then(data => {
                 roles = data;
                 authority();
-                console.log("all roles: ", roles)
+                //console.log("all roles: ", roles)
             })
             .catch(err => console.log(err))
     }
@@ -136,7 +136,7 @@ export default function Login(props) {
                         onChange={handleChangePassword} />
                 </div>
             </form>
-            <p className={`${!isField ? "no-black-places" : "black-places"}`}>No Empty Spot Please</p>
+            <p className={`${!isField ? "no-black-places" : "black-places"}`}>Please complete all fields.</p>
             <p className={`${errUser ? "error-msg" : "no-err"}`}>An error in Email or password </p>
             <div className='login-button-container'>
                 <button onClick={() => { loginSuccessful() }}>Log-In</button>

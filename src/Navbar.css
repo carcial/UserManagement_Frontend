@@ -100,6 +100,7 @@ header .close-tag {
     font-weight: 600;
     font-size: 15px;
     width: auto;
+    max-height: 40px;
     border: none;
     cursor: pointer;
     display: flex;
@@ -127,7 +128,7 @@ header .close-tag {
     display: block;
     cursor: pointer;
     position: absolute;
-    top: 37px;
+    top: 40px;
     width: 100%;
 }
 
@@ -135,7 +136,7 @@ header .close-tag {
     position: relative;
 }
 
-@media(max-width: 900px) {
+@media(max-width: 768px) {
 
 
     header .nav-tag {
@@ -194,8 +195,18 @@ header .close-tag {
         height: auto;
     }
 
+    header .nav-tag {
+        z-index: 5;
+        /* Ensures it appears on top of other components */
+    }
+
     header .nav-tag.toggled {
         left: 0;
+        top: 128px;
+        background: rgba(0, 0, 0, 0.8);
+        /* Dark overlay */
+        z-index: 5;
+        /* Keeps it on top when toggled */
     }
 
     header .open-tag {

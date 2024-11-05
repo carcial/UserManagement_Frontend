@@ -66,7 +66,7 @@ export default function Contact(props) {
                     setProfilePic("")
                 }
                 else {
-                    setProfilePic(`http://3.120.151.136:8082/api/v1/user/getImage/${id}`)
+                    setProfilePic(`${API_URL}/getImage/${id}`)
                 }
                 resp.blob()
             })
@@ -140,7 +140,7 @@ export default function Contact(props) {
             {props.isLogged && !seeUser &&
                 <div className='search-bar-container'>
                     <div className='input-container'>
-                        <input type="text" placeholder='search name or mail' onChange={handleChangeInput} value={inputValue} />
+                        <input type="text" placeholder='search name or e-mail address' onChange={handleChangeInput} value={inputValue} />
                         <CiSearch fontSize="30px" />
                     </div>
                     <div className={`display-seach ${inputValue === "" ? "empty" : ""}`}>
@@ -148,8 +148,8 @@ export default function Contact(props) {
                             user.name.toLowerCase().includes(inputValue.toLowerCase())
                             || user.email.toLowerCase().includes(inputValue.toLowerCase())).map((user) =>
                             (<div key={user.id} onClick={() => clickOnUser(user.id)} className="searched-user">
-                                <h2>{user.name}</h2>
-                                <h4>{user.email}</h4>
+                                <h3>{user.name}</h3>
+                                <h6>{user.email}</h6>
                             </div>
                             ))
                         }
@@ -157,18 +157,15 @@ export default function Contact(props) {
                 </div>
             }
             {(seeUser && showConfirmation) &&
-                (<div className='delete-confirmation-container'>
-                    <h3>
-                        The user
-                        "<span>{clickedUser.email}</span>"
-                        will be deleted from the Database,
-                        are you shure ?
-                    </h3>
-                    <div className='delete-confirmation-button-container'>
-                        <button className='delete-button' onClick={() => deleteUserAccount(clickedUser.email)}>
-                            YES
-                        </button>
-                        <button onClick={() => setShowConfirmation(false)}>NO</button>
+                (<div class="page-overlay">
+                    <div class="delete-confirmation-container">
+                        <h3>
+                            The user "<span>{clickedUser.email}</span>" will be deleted from the Database, are you sure?
+                        </h3>
+                        <div class="delete-confirmation-button-container">
+                            <button className="delete-button" onClick={() => deleteUserAccount(clickedUser.email)}>YES</button>
+                            <button className="return-button" onClick={() => setShowConfirmation(false)}>NO</button>
+                        </div>
                     </div>
                 </div>)
             }
@@ -182,22 +179,22 @@ export default function Contact(props) {
                                     : <div className='user-detail-infos-image'><CgProfile className='profilePic' /></div>}
                                 <div className='clicked-user-meta-infos'>
                                     <div className='lab'>
-                                        <label>First Name :</label>
-                                        <h2>{clickedUser.name}</h2>
+                                        <label>First Name: </label>
+                                        <h3>{clickedUser.name}</h3>
                                     </div>
                                     <div className='lab'>
-                                        <label>Second Name :</label>
-                                        <h2>{clickedUser.surName}</h2>
+                                        <label>Second Name: </label>
+                                        <h3>{clickedUser.surName}</h3>
                                     </div>
                                     <div className='lab'>
-                                        <label>Email :</label>
-                                        <h2>{clickedUser.email}</h2>
+                                        <label>Email: </label>
+                                        <h3>{clickedUser.email}</h3>
                                     </div>
                                 </div>
                             </div>
                             <div className='return-and-delete-account'>
                                 <button className='delete-button' onClick={() => setShowConfirmation(true)}><AiTwotoneDelete />delete account</button>
-                                <button onClick={returnToContactTable} ><TbPlayerTrackPrevFilled />return</button>
+                                <button className="return-button" onClick={returnToContactTable} ><TbPlayerTrackPrevFilled />return</button>
                             </div>
                         </div>)
                         :

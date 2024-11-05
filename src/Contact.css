@@ -1,66 +1,89 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main Container */
 .contact-page-container {
     width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .contact-page {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Pagination Controls */
 .button-pages-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: auto;
+    gap: 15px;
+    width: 100%;
     padding: 12px;
+    margin-top: 20px;
 }
 
 .current-page-number {
     display: flex;
-    margin: 0 30px;
-    gap: 2px;
-    font-family: Arial, Helvetica, sans-serif;
-    height: auto;
+    gap: 8px;
+    align-items: center;
 }
-
 
 .current-page-number .active-pageNumber {
     background-color: rgb(5, 103, 103);
     color: white;
-    border: none;
-    padding: 0 6px;
+    padding: 6px 10px;
+    border-radius: 5px;
 }
 
+/* Contact Table */
 .contact-table {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 80px;
-    width: 90%;
+    margin-top: 30px;
+    width: 100%;
 }
 
 table {
-    min-width: 70%;
-    height: auto;
-    border: 1px solid black;
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 th {
-    color: white;
     background-color: rgb(5, 103, 103);
-    overflow: hidden;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 12px;
+    text-align: left;
 }
 
 tr {
-    height: 30px;
+    transition: background-color 0.2s ease;
 }
 
 td {
-    overflow-x: hidden;
-    width: auto;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .user-table-row {
@@ -68,147 +91,298 @@ td {
 }
 
 .user-table-row:hover {
-    background-color: rgb(108, 232, 232);
+    background-color: rgba(5, 103, 103, 0.1);
+}
+
+/* User Detail Container */
+.user-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* User Information Section */
+.user-detail-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f7f9fc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Profile Picture Styling */
+.user-detail-infos-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e7f1;
+    color: #0c776c;
+    font-size: 2em;
+}
+
+/* User Meta Information */
+.clicked-user-meta-infos {
+    width: 100%;
+    text-align: left;
+    margin-top: 15px;
 }
 
 .clicked-user-meta-infos .lab {
     display: flex;
     align-items: center;
-}
-
-.clicked-user-meta-infos .lab label {
-    margin-right: 10px;
-}
-
-.clicked-user-meta-infos {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top: 1px solid black;
-    padding: 10px;
-    width: 90%;
+    margin: 8px 0;
+    color: #333;
+    font-weight: bold;
 }
 
 .clicked-user-meta-infos label {
-    min-width: 100px;
+    min-width: 120px;
+    color: #095f56;
+    font-weight: bold;
 }
 
-.clicked-user-meta-infos .lab h2 {
-    overflow: auto;
+.clicked-user-meta-infos h3 {
+    color: #333;
+    font-size: 1rem;
+    font-weight: normal;
 }
 
-.user-detail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 90%;
-}
-
-.user-detail-container.confirm {
-    filter: blur(20px);
-    pointer-events: none;
-    user-select: none;
-}
-
-.user-detail-infos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border: 2px solid black;
-    margin-bottom: 20px;
-    padding: 20px;
-    width: 100%;
-}
-
-.user-detail-infos-image {
-    border: none;
-    margin-bottom: 10px;
-}
-
-.user-detail-infos img {
-    width: 145px;
-    height: 140px;
-}
-
+/* Return and Delete Buttons Container */
 .return-and-delete-account {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 20px;
 }
 
+/* Styling for Both Buttons */
 .return-and-delete-account button {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-}
-
-.delete-confirmation-container {
-    border: 1px solid black;
-    padding: 15px;
-    min-width: 30%;
-    max-width: 90%;
-    position: fixed;
-    background-color: white;
-    top: 50%;
-    z-index: 1;
-}
-
-.delete-confirmation-button-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.delete-confirmation-button-container button {
-    margin: 0;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 0.9em;
+    width: auto;
+    max-width: 200px;
 }
 
 .delete-button {
-    background-color: rgb(214, 46, 46);
+    background-color: #d44646;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+
+    border: none;
 }
 
-td {
+.delete-button:hover {
+    background-color: #b73636;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Return Button */
+.return-button {
+    background-color: #095f56;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.return-button:hover {
+    background-color: #074f47;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Page Overlay */
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    /* Blurs the background */
+    z-index: 9;
+    /* Should be just below the modal */
+}
+
+/* Delete Confirmation Container */
+.delete-confirmation-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    border-top: 1px solid black;
-    font-family: Arial, Helvetica, sans-serif;
+    z-index: 10;
+    /* Ensures it's on top of the overlay */
 }
 
+/* Text Styling */
+.delete-confirmation-container h3 {
+    font-size: 1em;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.delete-confirmation-container span {
+    color: #095f56;
+    font-weight: bold;
+}
+
+/* Delete Confirmation Container */
+.delete-confirmation-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 10;
+}
+
+/* Text Styling */
+.delete-confirmation-container h3 {
+    font-size: 1em;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.delete-confirmation-container span {
+    color: #095f56;
+    font-weight: bold;
+}
+
+/* Button Container */
+.delete-confirmation-button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Button Styles */
+.delete-confirmation-button-container button {
+    flex: 1;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+/* YES Button */
+.delete-confirmation-button-container .delete-button {
+    background-color: #d44646;
+    color: #ffffff;
+}
+
+.delete-confirmation-button-container .delete-button:hover {
+    background-color: #b73636;
+}
+
+/* NO Button */
+.delete-confirmation-button-container .return-button {
+    background-color: #095f56;
+    color: #ffffff;
+}
+
+.delete-confirmation-button-container .return-button:hover {
+    background-color: #074f47;
+}
+
+
+
+/* Search Bar Container */
 .search-bar-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: auto;
 }
 
-.search-bar-container .input-container {
+/* Input Container */
+.input-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-width: 40%;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 18px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    /* Ensures input is above dropdown */
 }
 
 .input-container input {
-    height: 30px;
-    width: 80%;
+    flex: 1;
+    border: none;
+    padding-left: 10px;
     border-radius: 18px;
-    padding-left: 18px;
     outline: none;
+    font-size: 1em;
 }
 
+/* Display Search Results */
 .display-seach {
-    min-width: 35%;
-    max-height: 100px;
-    padding: 0 10px;
-    margin-right: 40px;
-    margin-top: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    max-height: 200px;
+    width: 100%;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    border: 1px solid black;
 }
 
 .display-seach.empty {
@@ -216,33 +390,29 @@ td {
 }
 
 .searched-user {
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px;
     padding: 10px;
+    margin: 10px;
+    width: 90%;
+    background-color: white;
+    color: rgb(18, 17, 17);
+    border: 1px solid #095f56;
+    border-radius: 15px;
     cursor: pointer;
-    margin: 5px 0;
-    background-color: rgb(19, 111, 111);
+    transition: background-color 0.3s ease;
 }
 
-.searched-user h2,
-h4 {
+.searched-user:hover {
+    background-color: #095f56;
     color: white;
-    padding: 5px 0;
 }
+
 
 .searched-user h2 {
-    border-bottom: 1px solid white;
-    width: 200px;
-    text-align: center;
-
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    width: 100%;
+    padding-bottom: 4px;
 }
-
-
-/*
-  .display-seach::-webkit-scrollbar {
-    display: none;
-  }
-  */

@@ -1,159 +1,90 @@
-
-
-import { useState } from 'react'
+import { useState } from 'react';
 import Login from './Login';
-import "../SignUp.css"
-import { MdOutlineMail, MdOutlinePassword, MdOutlinePersonOutline, MdOutlineArrowBack } from "react-icons/md"
+import "../SignUp.css";
+import { MdOutlineMail, MdOutlinePassword, MdOutlinePersonOutline, MdOutlineArrowBack } from "react-icons/md";
 
-export const API_URL = "https://usermanagement-backend-ht6k.onrender.com/api/v1/user";
+export const API_URL = "https://usermanagementbackend-production-ab31.up.railway.app/api/v1/user";
 
 export default function SignUp(props) {
-
     const [name, setUserName] = useState("");
     const [surName, setUserSurName] = useState("");
     const [email, setUserEmail] = useState("");
     const [pass, setPass] = useState("");
 
+    const [isField, setIsField] = useState(false);
+    const [registrationOk, setRegistrationOk] = useState(false);
 
-    const [isField, setIsField] = useState(false)
+    const userObject = { name, surName, email, pass };
 
-    const [registratioOk, isRegistrationOk] = useState(false)
+    const handleChange = (setter) => (event) => setter(event.target.value);
 
-    const userObject = { name, surName, email, pass }
+    const testIfInputEmpty = () => {
+        const isComplete = Object.values(userObject).every((field) => field.trim() !== "");
+        setIsField(isComplete);
+        return isComplete;
+    };
 
-    let countFieldInput = Object.keys(userObject).length
+    const addUser = () => {
+        if (testIfInputEmpty()) {
+            fetch(`${API_URL}/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userObject),
+            })
+                .then((res) => res.text())
+                .then(() => setRegistrationOk(true))
+                .catch(console.log);
 
-
-    function handleChangeName(event) {
-        setUserName(event.target.value)
-    }
-    function handleChangeSurName(event) {
-        setUserSurName(event.target.value)
-    }
-    function handleChangeEmail(event) {
-        setUserEmail(event.target.value)
-    }
-    function handleChangePassword(event) {
-        setPass(event.target.value)
-    }
-
-    function testIfInputEmpty() {
-
-        if (userObject.name !== "") {
-            countFieldInput--
+            setUserName("");
+            setUserSurName("");
+            setUserEmail("");
+            setPass("");
+            setTimeout(() => returnToLogin(), 2000);
         }
-        if (userObject.surName !== "") {
-            countFieldInput--
-        }
-        if (userObject.email !== "") {
-            countFieldInput--
-        }
-        if (userObject.pass !== "") {
-            countFieldInput--
-        }
+    };
 
-        if (countFieldInput === 0) {
-            setIsField(true)
-        }
-        else {
-            setIsField(false)
-        }
-    }
-
-    function username() {
-        props.reset(userObject.name)
-    }
-
-    function getUsId(id) {
-        props.getId(id)
-    }
-
-    function getPass(pass) {
-        props.getPass(pass)
-    }
-
-
-    function addUser() {
-
-        testIfInputEmpty()
-
-        if (countFieldInput === 0) {
-            fetch(`${API_URL}/register`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(userObject)
-                })
-                .then(res => res.text())
-                .then(data => { console.log(data); isRegistrationOk(true) })
-                .catch(err => console.log(err))
-
-            setUserName("")
-            setUserSurName("")
-            setUserEmail("")
-            setPass("")
-        }
-        username()
-        if (isField === true) {
-            successfulRegistrationMessage()
-        }
-    }
-
-    function returnToLogin() {
-        props.check(false)
-        isRegistrationOk(false)
-    }
-
-    function successfulRegistrationMessage() {
-        setTimeout(() => returnToLogin(), 2000)
-    }
-
+    const returnToLogin = () => {
+        props.check(false);
+        setRegistrationOk(false);
+    };
 
     return (
-        <section className='registration-container'>
-            <div className={`${!registratioOk ? "registration-massage-fail" : "registration-massage-Success"}`}><h5>Registration Successful</h5></div>
-            {!props.hasAccount ?
-                <Login check={props.check} red={props.red} setName={props.reset} getsId={getUsId} getPass={getPass} hasAuth={props.hasAuthority} />
-                :
-                <div className='regis-sub-container'>
-                    <div><h1 className='regis-title'>REGISTER</h1></div>
-                    <form className='all-input-container'>
-                        <div className='input-container'>
-                            <label><MdOutlinePersonOutline /> Name*</label>
-                            <input type="text"
-                                placeholder='enter your name'
-                                value={name}
-                                required
-                                onChange={handleChangeName} />
+        <section className="registration-container">
+            {registrationOk && (
+                <div className="registration-success-message">
+                    <h5>Registration Successful</h5>
+                </div>
+            )}
+            {props.hasAccount ? (
+                <div className="registration-form-container">
+                    <h1 className="registration-title">Create Your Account</h1>
+                    <form className="input-form">
+                        <div className="input-group">
+                            <label><MdOutlinePersonOutline /> First Name</label>
+                            <input type="text" placeholder="Enter your first name" value={name} onChange={handleChange(setUserName)} required />
                         </div>
-                        <div className='input-container'>
-                            <label><MdOutlinePersonOutline /> Surname*</label>
-                            <input type="text"
-                                placeholder='enter your surname'
-                                value={surName}
-                                onChange={handleChangeSurName} />
+                        <div className="input-group">
+                            <label><MdOutlinePersonOutline /> Last Name</label>
+                            <input type="text" placeholder="Enter your last name" value={surName} onChange={handleChange(setUserSurName)} />
                         </div>
-                        <div className='input-container'>
-                            <label><MdOutlineMail /> Email*</label>
-                            <input type="email"
-                                placeholder='enter your email'
-                                value={email}
-                                onChange={handleChangeEmail} />
+                        <div className="input-group">
+                            <label><MdOutlineMail /> Email</label>
+                            <input type="email" placeholder="Enter your email" value={email} onChange={handleChange(setUserEmail)} />
                         </div>
-                        <div className='input-container'>
-                            <label><MdOutlinePassword /> Password*</label>
-                            <input type="password"
-                                placeholder='password'
-                                value={pass}
-                                onChange={handleChangePassword} />
+                        <div className="input-group">
+                            <label><MdOutlinePassword /> Password</label>
+                            <input type="password" placeholder="Enter your password" value={pass} onChange={handleChange(setPass)} />
                         </div>
                     </form>
-                    <p className={`${!isField ? "no-black-places" : "black-places"}`}>No Empty Spot Please</p>
-                    <div className='signup-button-container'>
-                        <button onClick={() => { addUser() }} >Register</button>
-                        <button onClick={returnToLogin}><MdOutlineArrowBack /> Login</button>
+                    {!isField && <p className="error-message">Please complete all fields.</p>}
+                    <div className="button-group">
+                        <button className="register-button" onClick={addUser}>Register</button>
+                        <button className="return-button" onClick={returnToLogin}><MdOutlineArrowBack /> Login Now</button>
                     </div>
-                </div>}
+                </div>
+            ) : (
+                <Login check={props.check} red={props.red} setName={props.reset} getsId={props.getId} getPass={props.getPass} hasAuth={props.hasAuthority} />
+            )}
         </section>
-    )
+    );
 }

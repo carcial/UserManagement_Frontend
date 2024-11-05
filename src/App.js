@@ -66,8 +66,8 @@ function App() {
         newName={name} getId={getId}
         authorised={authorised} authority={authority} />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/service' element={<Service />} />
+        <Route path='/' element={<Home hasAccount={userId} name={name} />} />
+        <Route path='/service' element={<Service hasAccount={userId} name={name} />} />
         <Route path='/contact' element={<Contact isLogged={logOut} usId={userId} />} />
         <Route path='/profile' element={<Profile usId={userId} setUserName={reset}
           pass={pass} />} />
